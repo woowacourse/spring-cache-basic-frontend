@@ -1,29 +1,25 @@
-class VideoItem {
-  constructor(videoItem = {}) {
+export default class VideoItem {
+  constructor(videoItem) {
     this.videoItem = videoItem;
-    this.element = "";
     this.render();
   }
   render() {
     const {
-      id,
-      snippet: {
-        title,
-        description,
-        thumbnails: {
-          medium: { url: thumbnailUrl },
-        },
+      title,
+      channelTitle,
+      publishTime,
+      thumbnails: {
+        default: { url },
       },
     } = this.videoItem;
-    this.element = document.createElement("div");
-    this.element.classList.add("video-item");
-    this.element.innerHTML = `
-      <img src="${thumbnailUrl}" alt="${title}" />
-      <div class="video-item__info">
-        <h4>${title}</h4>
-        <p>${description}</p>
-      </div>
-    `;
-    return this.element;
+    return ` 
+    <li class="video-item">
+      <img
+        src="${url}"
+        alt="video-item-thumbnail" class="video-item__thumbnail">
+      <h4 class="video-item__title">${title}</h4>
+      <p class="video-item__channel-name">${channelTitle}</p>
+      <p class="video-item__published-date">${publishTime}</p>
+    </li>`;
   }
 }
