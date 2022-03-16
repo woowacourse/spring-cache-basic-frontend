@@ -15,7 +15,7 @@ class App {
     if (!e.target.classList.contains("music-request-button")) {
       return;
     }
-    if (this.countOfCall >= 100) {
+    if (this.countOfCall >= 20) {
       alert("호출수를 다 사용하셨습니다. 초기화하려면 100만원을 결제하세요.");
       return;
     }
@@ -53,7 +53,7 @@ class App {
     $(
       "#average-response-time"
     ).innerText = `평균 응답 시간: ${this.getAverageResponseTime()}ms`;
-    $("#count-of-call").innerText = `${100 - this.countOfCall || "100"}/100`;
+    $("#count-of-call").innerText = `${20 - this.countOfCall || "20"}/20`;
     const videoItemsTemplate = items
       .map((item) => new VideoItem(item).render())
       .join("");
