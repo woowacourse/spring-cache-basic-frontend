@@ -45,7 +45,7 @@ class App {
     );
   }
 
-  render(time, items, countOfCall) {
+  render(time, items) {
     if (!items) {
       return;
     }
@@ -53,7 +53,7 @@ class App {
     $(
       "#average-response-time"
     ).innerText = `평균 응답 시간: ${this.getAverageResponseTime()}ms`;
-    $("#count-of-call").innerText = `${countOfCall || "100"}/100`;
+    $("#count-of-call").innerText = `${100 - this.countOfCall || "100"}/100`;
     const videoItemsTemplate = items
       .map((item) => new VideoItem(item).render())
       .join("");
